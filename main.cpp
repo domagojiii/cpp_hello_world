@@ -2,11 +2,21 @@
 using namespace std;
 
 int main() {
-  int decilitri = 1798282; 
-  int hektolitri, litre;
-  hektolitri = decilitri / 1000;
-  litre = decilitri / 10;
-  std::cout << decilitri << "\n";
-  std::cout << hektolitri << " " << litre  << " " << decilitri << "\n";
+  int a = 179; 
+  int b = 123;
+  int c;
+  cout << a << " " << b << " " << c << "\n";
+  if (c == a+b) {
+    cout << "tocno\n";
+  } else {
+  	cout << "netocno\n";
+  }
+  c = a + b;
+  cout << a << " " << b << " " << c << "\n";
+  if (c == a+b) {
+    cout << "tocno\n";
+  } else {
+  	cout << "netocno\n";
+  }
   return 0;
 }
