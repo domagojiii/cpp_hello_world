@@ -1,10 +1,21 @@
-troznamenkasti_broj = int(input('unesi troznamenkasti broj:'))
+a = input('unesi prvi broj:')
+b = input('unesi drugi broj:')
+c = input('unesi treci broj:')
 
-i = 100
-while i <= troznamenkasti_broj:
-	prva_znamenka = i/100
-	druga_znamenka = i/10%10
-	treca_znamenka = i%10
-	if prva_znamenka%2 == 1 and druga_znamenka%2 == 1 and treca_znamenka%3 == 0 and treca_znamenka != 0:
-		print(i)
-	i += 1
+broj_trokuta = 0
+broj_istokracnih_trokuta = 0
+
+while a != 0 and b != 0 and c != 0:
+	if a + b < c or a + c < b or b + c < a:
+		print('Ucitane duljine stranica ne cine trokut')
+	else:
+		print('Ucitane su stranice trokuta a = {:.2f}, b = {:.2f}, c = {:.2f}'.format(a, b, c))
+		broj_trokuta += 1
+		if a == b or b == c or c == a:
+			broj_istokracnih_trokuta += 1
+
+	a = input('unesi prvi broj:')
+	b = input('unesi drugi broj:')
+	c = input('unesi treci broj:')
+
+print('Bilo je ukupno {} trokuta od kojih je {} istokracna trokuta'.format(broj_trokuta, broj_istokracnih_trokuta))
