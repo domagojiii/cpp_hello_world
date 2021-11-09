@@ -10,6 +10,8 @@ while a != 0 and b != 0 and c != 0:
 		print('Ucitane duljine stranica ne cine trokut')
 	else:
 		print('Ucitane su stranice trokuta a = {:.2f}, b = {:.2f}, c = {:.2f}'.format(a, b, c))
+		opseg = a + b + c
+		print('Opseg trokuta je {:.2f}'.format(opseg)
 		broj_trokuta += 1
 		if a == b or b == c or c == a:
 			broj_istokracnih_trokuta += 1
