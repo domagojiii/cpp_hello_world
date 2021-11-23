@@ -1,21 +1,23 @@
 import math
 
-def polumjer():
-	r = input('Koliki je radijus kruznice:')
-	if r > 0:
-		return r
+def diskriminanta(a,b,c):
+	d = math.pow(b,2) - 4*a*c
+	if d > 0:
+		return d
 	else:
 		return 0
 
-def opseg(r):
-	return 2*r*math.pi
+def predznak(x):
+	return x*(-1)
 
-def povrsina(r):
-	return math.pow(r,2)*math.pi
+def umnozak_nultocki(a,b,c):
+	return ((predznak(b) + math.sqrt(diskriminanta(a,b,c)))/(2*a)) * ((predznak(b) - math.sqrt(diskriminanta(a,b,c)))/(2*a))
 
-x = 0
-while x == 0:
-	x = polumjer()
-	if x == 0:
-		print('Ponovite, unos je <= 0')
-print('Kruznica je opsega {:.1f} cm, te povrsine {:.1f} cm^2'.format(opseg(x), povrsina(x)))
+a = int(input('unesi a:'))
+b = int(input('unesi b:'))
+c = int(input('unesi c:'))
+while a != 0 and b != 0 and c != 0:
+	print(umnozak_nultocki(a,b,c))
+	a = int(input('unesi a:'))
+	b = int(input('unesi b:'))
+	c = int(input('unesi c:'))
