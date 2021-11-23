@@ -13,11 +13,14 @@ def predznak(x):
 def umnozak_nultocki(a,b,c):
 	return ((predznak(b) + math.sqrt(diskriminanta(a,b,c)))/(2*a)) * ((predznak(b) - math.sqrt(diskriminanta(a,b,c)))/(2*a))
 
-a = int(input('unesi a:'))
-b = int(input('unesi b:'))
-c = int(input('unesi c:'))
-while a != 0 and b != 0 and c != 0:
-	print(umnozak_nultocki(a,b,c))
+def main():
 	a = int(input('unesi a:'))
 	b = int(input('unesi b:'))
 	c = int(input('unesi c:'))
+	while a != 0 and b != 0 and c != 0:
+		print(umnozak_nultocki(a,b,c))
+		a = int(input('unesi a:'))
+		b = int(input('unesi b:'))
+		c = int(input('unesi c:'))
+
+main()
