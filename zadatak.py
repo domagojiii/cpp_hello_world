@@ -1,23 +1,21 @@
-a = input('unesi prvi broj:')
-b = input('unesi drugi broj:')
-c = input('unesi treci broj:')
+import math
 
-broj_trokuta = 0
-broj_istokracnih_trokuta = 0
-
-while a != 0 and b != 0 and c != 0:
-	if a + b < c or a + c < b or b + c < a:
-		print('Ucitane duljine stranica ne cine trokut')
+def polumjer():
+	r = input('Koliki je radijus kruznice:')
+	if r > 0:
+		return r
 	else:
-		print('Ucitane su stranice trokuta a = {:.2f}, b = {:.2f}, c = {:.2f}'.format(a, b, c))
-		opseg = a + b + c
-		print('Opseg trokuta je {:.2f}'.format(opseg)
-		broj_trokuta += 1
-		if a == b or b == c or c == a:
-			broj_istokracnih_trokuta += 1
+		return 0
 
-	a = input('unesi prvi broj:')
-	b = input('unesi drugi broj:')
-	c = input('unesi treci broj:')
+def opseg(r):
+	return 2*r*math.pi
 
-print('Bilo je ukupno {} trokuta od kojih je {} istokracna trokuta'.format(broj_trokuta, broj_istokracnih_trokuta))
+def povrsina(r):
+	return math.pow(r,2)*math.pi
+
+x = 0
+while x == 0:
+	x = polumjer()
+	if x == 0:
+		print('Ponovite, unos je <= 0')
+print('Kruznica je opsega {:.1f} cm, te povrsine {:.1f} cm^2'.format(opseg(x), povrsina(x)))
