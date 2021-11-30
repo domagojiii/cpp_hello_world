@@ -1,8 +1,25 @@
-import math
+def ispis_datum(d, m, g):
+	print('Uneseni datum je {}.{}.{}'.format(d, m, g), end='')
 
-vrijeme_12_24 = int(input('Unesite prikaz vremena koje vas sat podrzava (24/12): '))
-vrijeme = int(input('Unesite vrijeme koje prikazuje vas sat sada: '))
-minute = int(input('Unesite trazene minute: '))
-vrijeme_sastanka_sat = (vrijeme + 80) % vrijeme_12_24
-vrijeme_sastanka_sat_minute = vrijeme_sastanka_sat + (minute / 60)
-print('Tocno vrijeme sastanka zamaskirano decimalnim zapisom je: {:.3f}'.format(vrijeme_sastanka_sat_minute))
+def ispis_dan(d, m, g):
+	x = d
+	for i in range(m):
+		if i == 1 or i == 3 or i == 5 or i == 7 or i == 8 or i == 10 or i == 12:
+			x += 31
+		if i == 2:
+			x += 28
+		if i == 4 or i == 6 or i == 9 or i == 11:
+			x += 30
+	print(' i to je {}. dan u godini.'.format(x))
+
+def main():
+	a = 1
+	while a != 0:
+		d = int(input('Unesite dan: '))
+		m = int(input('Unesite mjesec: '))
+		g = int(input('Unesite godinu: '))
+		ispis_datum(d, m, g)
+		ispis_dan(d, m, g)
+		a = int(input('Za nastavak unesi 1, za kraj unesi 0: '))
+
+main()
