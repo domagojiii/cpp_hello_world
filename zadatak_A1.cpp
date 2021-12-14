@@ -8,7 +8,9 @@ int MAX_INT = 1000;
 
 void eratostenovo_sito(int i, int j) {
   bool prost[MAX_INT];
-  memset(prost, true, sizeof(prost));
+  for(int i=0; i<MAX_INT; i++) {
+    prost[i] = true;
+  }
   for(int x = i; x < j; x++) {
     for (int p = 2; p * p <= polje[x]; p++) {
       if (prost[p] == true) {
