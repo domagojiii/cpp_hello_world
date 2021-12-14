@@ -1,4 +1,5 @@
 recenica = input("Upisi string:")
+recenica = recenica.lower()
 a = recenica.count('a')
 e = recenica.count('e')
 i = recenica.count('i')
@@ -6,8 +7,34 @@ o = recenica.count('o')
 u = recenica.count('u')
 samoglasnici = a+e+i+o+u
 print('a {}, e {}, i {}, o {}, u {}'.format(a, e, i, o, u))
-razmaci = recenica.count(' ')
-suglasnici = len(recenica) - samoglasnici - razmaci - 1
+
+suglasnici = 0
+suglasnici = suglasnici + recenica.count('b')
+suglasnici = suglasnici + recenica.count('c')
+suglasnici = suglasnici + recenica.count('č')
+suglasnici = suglasnici + recenica.count('ć')
+suglasnici = suglasnici + recenica.count('d')
+suglasnici = suglasnici - recenica.count('dž')
+suglasnici = suglasnici + recenica.count('đ')
+suglasnici = suglasnici + recenica.count('f')
+suglasnici = suglasnici + recenica.count('g')
+suglasnici = suglasnici + recenica.count('h')
+suglasnici = suglasnici + recenica.count('j')
+suglasnici = suglasnici + recenica.count('k')
+suglasnici = suglasnici + recenica.count('l')
+suglasnici = suglasnici - recenica.count('lj')
+suglasnici = suglasnici + recenica.count('m')
+suglasnici = suglasnici + recenica.count('n')
+suglasnici = suglasnici - recenica.count('nj')
+suglasnici = suglasnici + recenica.count('p')
+suglasnici = suglasnici + recenica.count('r')
+suglasnici = suglasnici + recenica.count('s')
+suglasnici = suglasnici + recenica.count('š')
+suglasnici = suglasnici + recenica.count('t')
+suglasnici = suglasnici + recenica.count('v')
+suglasnici = suglasnici + recenica.count('z')
+suglasnici = suglasnici + recenica.count('ž')
+
 if suglasnici > samoglasnici:
 	print('Ukupna brojka samoglasnika je manja od suglasnika i ona iznosi {}'.format(samoglasnici))
 if suglasnici == samoglasnici:
