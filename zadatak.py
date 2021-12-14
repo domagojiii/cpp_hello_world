@@ -1,43 +1,29 @@
 recenica = input("Upisi string:")
 recenica = recenica.lower()
-a = recenica.count('a')
-e = recenica.count('e')
-i = recenica.count('i')
-o = recenica.count('o')
-u = recenica.count('u')
-samoglasnici = a+e+i+o+u
-print('a {}, e {}, i {}, o {}, u {}'.format(a, e, i, o, u))
 
-suglasnici = 0
-suglasnici = suglasnici + recenica.count('b')
-suglasnici = suglasnici + recenica.count('c')
-suglasnici = suglasnici + recenica.count('č')
-suglasnici = suglasnici + recenica.count('ć')
-suglasnici = suglasnici + recenica.count('d')
-suglasnici = suglasnici - recenica.count('dž')
-suglasnici = suglasnici + recenica.count('đ')
-suglasnici = suglasnici + recenica.count('f')
-suglasnici = suglasnici + recenica.count('g')
-suglasnici = suglasnici + recenica.count('h')
-suglasnici = suglasnici + recenica.count('j')
-suglasnici = suglasnici + recenica.count('k')
-suglasnici = suglasnici + recenica.count('l')
-suglasnici = suglasnici - recenica.count('lj')
-suglasnici = suglasnici + recenica.count('m')
-suglasnici = suglasnici + recenica.count('n')
-suglasnici = suglasnici - recenica.count('nj')
-suglasnici = suglasnici + recenica.count('p')
-suglasnici = suglasnici + recenica.count('r')
-suglasnici = suglasnici + recenica.count('s')
-suglasnici = suglasnici + recenica.count('š')
-suglasnici = suglasnici + recenica.count('t')
-suglasnici = suglasnici + recenica.count('v')
-suglasnici = suglasnici + recenica.count('z')
-suglasnici = suglasnici + recenica.count('ž')
+while '  ' in recenica:
+	recenica = recenica.replace('  ', ' ')
 
-if suglasnici > samoglasnici:
-	print('Ukupna brojka samoglasnika je manja od suglasnika i ona iznosi {}'.format(samoglasnici))
-if suglasnici == samoglasnici:
-	print('Ukupna brojka samoglasnika je jednak kao suglasnika i ona iznosi {}'.format(samoglasnici))
-if suglasnici < samoglasnici:
-	print('Ukupna brojka samoglasnika je veca od suglasnika i ona iznosi {}'.format(samoglasnici))
+recenica = recenica.replace(' .', '.')
+br = recenica.count(' ') + 1
+
+treca_rijec = ''
+
+i = 1
+poz = recenica.find(' ')
+while poz != -1:
+	i = i + 1
+	if i == 4:
+		treca_rijec = recenica[poz_old+1:poz]
+	poz_old = poz
+	poz = recenica.find(' ', poz+1)
+
+if treca_rijec == treca_rijec[::-1]:
+	je_nije = 'je'
+else:
+	je_nije = 'nije'
+
+if br < 3:
+	print('recenica ima manje od tri rijeci.')
+else:
+	print('recenica ima {} rijeci. treca rijec je {} i on {} palindrom.'.format(br, treca_rijec, je_nije))
