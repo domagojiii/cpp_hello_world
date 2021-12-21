@@ -1,29 +1,42 @@
-recenica = input("Upisi string:")
-recenica = recenica.lower()
+from random import randrange
 
-while '  ' in recenica:
-	recenica = recenica.replace('  ', ' ')
+def lista_slova(n):
+	slova = 'bcdfghjklmnpqrstvwxyz'
+	l = [slova[randrange(0, len(slova))] for i in range(n)]
+	print(l)
+	return l
 
-recenica = recenica.replace(' .', '.')
-br = recenica.count(' ') + 1
+def koliko_puta(l, s):
+	x = 0
+	for i in l:
+		if i == s:
+			x += 1
+	return x 
 
-treca_rijec = ''
+def main():
+	n = int(input('Unesite broj slova: '))
+	s = input('Unesite slovo: ')
+	l = lista_slova(n)
+	print('Slovo {} pojavilo se {} puta.'.format(s, koliko_puta(l, s)))
+	if s in l:
+		for x, y in enumerate(l):
+			if s == l[x]:
+				print('Redni broj pojave: na {}. poziciji.'.format(x))
+				print('Kreirao rijec: ', end='')
+				for i in l[x:] + l[:x]:
+					print(i, end='')
+				print()
+				break
 
-i = 1
-poz = recenica.find(' ')
-while poz != -1:
-	i = i + 1
-	if i == 4:
-		treca_rijec = recenica[poz_old+1:poz]
-	poz_old = poz
-	poz = recenica.find(' ', poz+1)
+	slovo = ''
+	broj_slova = 1000
+	for a in l:
+		if koliko_puta(l, a) < broj_slova:
+			slovo = a
+			broj_slova = koliko_puta(l, a)
+	for x, y in enumerate(l):
+		if slovo == l[x]:
+			print('U listi se slovo {} pojavilo najmanje puta - {} puta - redni broj pojave je {}. pozicija'.format(slovo, broj_slova, x))
+			break
 
-if treca_rijec == treca_rijec[::-1]:
-	je_nije = 'je'
-else:
-	je_nije = 'nije'
-
-if br < 3:
-	print('recenica ima manje od tri rijeci.')
-else:
-	print('recenica ima {} rijeci. treca rijec je {} i on {} palindrom.'.format(br, treca_rijec, je_nije))
+main()
