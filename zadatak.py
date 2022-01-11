@@ -1,42 +1,52 @@
 from random import randrange
 
-def lista_slova(n):
-	slova = 'bcdfghjklmnpqrstvwxyz'
-	l = [slova[randrange(0, len(slova))] for i in range(n)]
-	print(l)
-	return l
+def napuni_spil():
+	s = []
+	for i in range(4):
+		s.append(7)
+		s.append(8)
+		s.append(9)
+		s.append(10)
+		s.append('Decko')
+		s.append('Dama')
+		s.append('Kralj')
+		s.append('As')
+	return s
 
-def koliko_puta(l, s):
-	x = 0
-	for i in l:
-		if i == s:
-			x += 1
-	return x 
+def par_tris_poker(l):
+	par = 0
+	tris = 0
+	poker = 0
+	k = [7, 8, 9, 10, 'Decko', 'Dama', 'Kralj', 'As']
+	for i in k:
+		if l.count(i) == 2:
+			par += 1
+		if l.count(i) == 3:
+			tris += 1
+		if l.count(i) == 4:
+			poker += 1
+	return [par, tris, poker]
 
 def main():
-	n = int(input('Unesite broj slova: '))
-	s = input('Unesite slovo: ')
-	l = lista_slova(n)
-	print('Slovo {} pojavilo se {} puta.'.format(s, koliko_puta(l, s)))
-	if s in l:
-		for x, y in enumerate(l):
-			if s == l[x]:
-				print('Redni broj pojave: na {}. poziciji.'.format(x))
-				print('Kreirao rijec: ', end='')
-				for i in l[x:] + l[:x]:
-					print(i, end='')
-				print()
-				break
-
-	slovo = ''
-	broj_slova = 1000
-	for a in l:
-		if koliko_puta(l, a) < broj_slova:
-			slovo = a
-			broj_slova = koliko_puta(l, a)
-	for x, y in enumerate(l):
-		if slovo == l[x]:
-			print('U listi se slovo {} pojavilo najmanje puta - {} puta - redni broj pojave je {}. pozicija'.format(slovo, broj_slova, x))
-			break
+	rijecnik = {'9':0, '10':0, 'Decko':0, 'Dama':0}
+	s = [napuni_spil(), napuni_spil(), napuni_spil(), napuni_spil(), napuni_spil()]
+	for i in range(10):
+		l = []
+		for j in range(5):
+			k = randrange(0, len(s[j]))
+			l.append(s[j][k])
+			s[j].pop(k)
+		r = par_tris_poker(l)
+		print("{} igra ['P-{}', 'T-{}', 'PK-{}']".format(i+1, r[0], r[1], r[2]))
+		for x in l:
+			if x == 9:
+				rijecnik['9'] = rijecnik['9'] + 1
+			if x == 10:
+				rijecnik['10'] = rijecnik['10'] + 1
+			if x == 'Decko':
+				rijecnik['Decko'] = rijecnik['Decko'] + 1
+			if x == 'Dama':
+				rijecnik['Dama'] = rijecnik['Dama'] + 1
+	print("Ukupno izvucene karte: {}".format(rijecnik))
 
 main()
