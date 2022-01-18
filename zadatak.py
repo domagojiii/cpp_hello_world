@@ -1,52 +1,31 @@
-from random import randrange
-
-def napuni_spil():
-	s = []
-	for i in range(4):
-		s.append(7)
-		s.append(8)
-		s.append(9)
-		s.append(10)
-		s.append('Decko')
-		s.append('Dama')
-		s.append('Kralj')
-		s.append('As')
-	return s
-
-def par_tris_poker(l):
-	par = 0
-	tris = 0
-	poker = 0
-	k = [7, 8, 9, 10, 'Decko', 'Dama', 'Kralj', 'As']
-	for i in k:
-		if l.count(i) == 2:
-			par += 1
-		if l.count(i) == 3:
-			tris += 1
-		if l.count(i) == 4:
-			poker += 1
-	return [par, tris, poker]
-
 def main():
-	rijecnik = {'9':0, '10':0, 'Decko':0, 'Dama':0}
-	s = [napuni_spil(), napuni_spil(), napuni_spil(), napuni_spil(), napuni_spil()]
-	for i in range(10):
-		l = []
-		for j in range(5):
-			k = randrange(0, len(s[j]))
-			l.append(s[j][k])
-			s[j].pop(k)
-		r = par_tris_poker(l)
-		print("{} igra ['P-{}', 'T-{}', 'PK-{}']".format(i+1, r[0], r[1], r[2]))
-		for x in l:
-			if x == 9:
-				rijecnik['9'] = rijecnik['9'] + 1
-			if x == 10:
-				rijecnik['10'] = rijecnik['10'] + 1
-			if x == 'Decko':
-				rijecnik['Decko'] = rijecnik['Decko'] + 1
-			if x == 'Dama':
-				rijecnik['Dama'] = rijecnik['Dama'] + 1
-	print("Ukupno izvucene karte: {}".format(rijecnik))
+	m = int(input('M: '))
+	n = int(input('N: '))
+	doc = open('Documents/mnozenje.txt', 'w')
+	for y in range(m, n+1):
+		doc.write(str(y)+'\t')
+	doc.write('\n')
+	for x in range(m, n+1):
+		for y in range(m, n+1):
+			doc.write(str(x*y)+'\t')
+		doc.write('\n')
+	doc.close()
+	s1 = int(input('Zamijeni stupac: '))
+	s2 = int(input('i stupac: '))
+	doc = open('Documents/mnozenje.txt', 'r')
+	linije = doc.readlines()
+	doc.close()
+	doc = open('Documents/mnozenje.txt', 'a')
+	doc.write('\n')
+	doc.write('Zamijenio {}. i {}. stupac\n'.format(s1, s2))
+	for l in linije:
+		brojevi = l.rstrip('\n').split('\t')
+		btemp = brojevi[s1-1]
+		brojevi[s1-1] = brojevi[s2-1]
+		brojevi[s2-1] = btemp
+		for b in brojevi[:-1]:
+			doc.write(b+'\t')
+		doc.write('\n')
+	doc.close()
 
 main()
