@@ -1,31 +1,42 @@
+from random import randrange
+
+rijecnik = {}
+izm = []
+
+def prijevod(r):
+	return rijecnik[r]
+
+def razgovor():
+	br = 0
+	for p in range(3):
+		print('Pitanje '+str(p))
+		r = izm[randrange(0, 6)]
+		br += len(r)
+		print(r+'?')
+		print('('+prijevod(r)+')\n')
+		print('Odgovor '+str(p))
+		br += len(prijevod(r))
+		r = izm[randrange(0, 6)]
+		br += len(r)
+		print(r+'?')
+		print('('+prijevod(r)+')\n')
+		br += len(prijevod(r))
+	return br
+
 def main():
-	m = int(input('M: '))
-	n = int(input('N: '))
-	doc = open('Documents/mnozenje.txt', 'w')
-	for y in range(m, n+1):
-		doc.write(str(y)+'\t')
-	doc.write('\n')
-	for x in range(m, n+1):
-		for y in range(m, n+1):
-			doc.write(str(x*y)+'\t')
-		doc.write('\n')
-	doc.close()
-	s1 = int(input('Zamijeni stupac: '))
-	s2 = int(input('i stupac: '))
-	doc = open('Documents/mnozenje.txt', 'r')
-	linije = doc.readlines()
-	doc.close()
-	doc = open('Documents/mnozenje.txt', 'a')
-	doc.write('\n')
-	doc.write('Zamijenio {}. i {}. stupac\n'.format(s1, s2))
-	for l in linije:
-		brojevi = l.rstrip('\n').split('\t')
-		btemp = brojevi[s1-1]
-		brojevi[s1-1] = brojevi[s2-1]
-		brojevi[s2-1] = btemp
-		for b in brojevi[:-1]:
-			doc.write(b+'\t')
-		doc.write('\n')
-	doc.close()
+	hrv = ['crveno', 'plavo', 'jedan', 'osam', 'sutra', 'subota']
+	slova = 'abcdefghijklmnopqrstuvwxyz'
+	for hrvrijec in hrv:
+		d = randrange(2, 8)
+		r = slova[randrange(0, len(slova))]
+		for i in range(d-1):
+			s = slova[randrange(0, len(slova))]
+			while s == r[-1]:
+				s = slova[randrange(0, len(slova))]
+			r = r + s
+		rijecnik[r] = hrvrijec
+		izm.append(r)
+
+	print('ukupno '+str(razgovor())+' slova')
 
 main()
