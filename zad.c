@@ -1,3 +1,61 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h> 
+
+int main()
+{
+    int duljina = 0;
+    int i,j,k,g;
+    int n;
+    int broj = 1;
+    int zbroj = 0;
+    
+    
+    printf("Unesi neparni broj [7,17]: ");
+    scanf("%d", &n);
+    
+    while ((n < 7 || n > 17) || n % 2 != 1) {
+        printf("Unesi neparni broj [7,17]: ");
+        scanf("%d", &n);
+    }
+    
+    int zvijezdice = (n * 2) - 3;
+    
+    for(i=1;i<n+1;i++) {
+        for(j=0;j<i;j++) {
+            printf("%d", broj++);
+        }
+        
+        for(k=0;k<zvijezdice;k++){
+            printf("*");
+        }
+        
+        if(i == n) {
+            broj -= 1;
+        }
+        
+        for(g=0;g<i;g++) {
+            
+            broj -= 1;
+            if(broj != 0)
+            printf("%d", broj);
+            
+        }
+        
+        zbroj += i * 2;
+        if(i == n)
+        zbroj = zbroj - i;
+        
+        
+        broj = 1;
+        printf("%4d",zbroj);
+        printf("\n");
+        zvijezdice = zvijezdice - 2;
+    }
+    
+    return 0;
+}
+
 #include <stdio.h>
 #include <stdlib.h>
 
